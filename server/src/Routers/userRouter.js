@@ -1,5 +1,7 @@
 const express = require('express');
-const getUser = require('../Controller/userControler');
+const {getUsers,getUser} = require('../Controller/userControler');
+// const getUser = require('../Controller/userControler');
+
 const useRouter = express.Router();
 
 const islogedin = (req,res,next)=>{
@@ -14,12 +16,11 @@ const islogedin = (req,res,next)=>{
     }   
   }
 
-useRouter.get("/",getUser)
-useRouter.get("/profile",(req,res)=>{
-    console.log(req.body.id)
-    res.status(200).send({
-        messege:" Test Successfull",
-    })
-})
+useRouter.get("/",getUsers);
+useRouter.get("/:id",getUser);
+
+
+
+
 
 module.exports = useRouter;

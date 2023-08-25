@@ -33,7 +33,6 @@ app.use('/api/seed',seedRouter);
 
   //Client side error handeling
   app.use((req,res,next)=>{
-
       next(createError(404,'Page Not Found'));
   })
 
