@@ -30,7 +30,7 @@ const userSchema = new Schema({
         type:String,
     },
     phone:{
-        type:Number,
+        type:String,
         minlength:[10,'Min Length is 10'],
         maxlength:11
     },
