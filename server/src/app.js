@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const createError = require('http-errors');
 const rateLimit = require('express-rate-limit');
 const useRouter = require("./Routers/userRouter");
+const seedRouter = require("./Routers/seedRouter");
 
 const ratelimiter = rateLimit({
     windowMs : 1*60*1000,
@@ -14,7 +15,9 @@ const ratelimiter = rateLimit({
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
 app.use('/api/user',useRouter);
+app.use('/api/seed',seedRouter);
 
 
 
@@ -29,10 +32,7 @@ app.use('/api/user',useRouter);
 
   //Client side error handeling
   app.use((req,res,next)=>{
-    //   res.status(404).send({
-    //       messege: "Page Not Found"
-    //   });
-      
+
       next(createError(404,'Page Not Found'));
   })
 
